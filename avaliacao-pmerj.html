@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação - PMERJ</title>
+    <link rel="shortcut icon" href="https://cdn.discordapp.com/attachments/1127720158555807854/1134996805239722106/logotipo.png" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap');
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: 'Sora', sans-serif;
+            background-color: #1E1E1E;
+            color: white;
+        }
+        #questionnaire {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .question {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .header{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 75px;
+            align-items: center;
+            height: 12rem;
+            border-bottom: 2px solid #3C3C3C;
+            margin-bottom: 25px;
+        }
+        img{
+            width: 120px;
+        }
+        h1{
+            color: white;
+            font-size: 3rem;
+        }
+        input{
+            width: 36.4375rem;
+            height: 5.25rem;
+            flex-shrink: 0;
+            border-radius: 0.1875rem;
+            background: #111;
+            border: none;
+            outline: none;
+            padding-left: 15px;
+            font-size: 18px;
+            color: white;
+        }
+        span{
+            font-size: 18px;
+        }
+        button{
+            width: calc(36.4375rem + 15px);
+            height: 5.25rem;
+            background-color: white;
+            color: rgb(31, 31, 31);
+            border-radius: 0.1875rem;
+            border: none;
+            outline: none;
+            font-size: 19px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://cdn.discordapp.com/attachments/1127720158555807854/1134996805239722106/logotipo.png" alt="">
+        <h1>Avaliação - PMERJ</h1>
+        <img src="https://cdn.discordapp.com/attachments/1127720158555807854/1134996805239722106/logotipo.png" alt="">
+        
+    </div>
+    <div id="questionnaire">
+        <div class="question">
+            <span>Instrutor:</span><br>
+            <input type="text" id="instrutor" placeholder="Digite sua Resposta">
+        </div>
+        <div class="question">
+            <span>Nome &amp; Id do conscrito: Exemplo("Luydi Passarin | 1430")</span><br>
+            <input type="text" id="conscrito" placeholder="Digite sua Resposta">
+        </div>
+        <div class="question">
+            <span>Turno de Trabalho</span><br>
+            <input type="text" id="turno" placeholder="Digite sua Resposta">
+        </div>
+        <div class="question">
+            <span>1) Uma viatura pede apoio para realizar uma abordagem, sua viatura está<br> se deslocando para atender a solicitação de apoio. Como você modularia na Maré Zero?<br> (Instrutor: obrigatório o uso do nosso padrão de modulação, mas, não informe isso ao mesmo) [2.0 ponto]</span><br>
+            <input type="text" class="answer" placeholder="Digite entre [1 - 2]">
+        </div>
+        <div class="question">
+            <span>2) Sua VTR passa em frente a uma casa onde indivíduos armados ao avistarem a VTR, atiram contra a guarnição. Como você modularia na Maré Zero?<br>
+                (Instrutor: obrigatório o uso do nosso padrão de modulação, mas, não informe isso ao mesmo) [2.0 ponto]</span><br>
+            <input type="text" class="answer" placeholder="Digite entre [1 - 2]">
+        </div>
+        <div class="question">
+            <span>3) A PM recebe uma denúncia de tráfico de drogas e sua guarnição vai averiguar. Quando vocês chegam ao local da denúncia, se deparam com um cidadão do<br> sexo oposto ao seu, deixando em uma casa um pacote suspeito. O que você faria nessa situação? [2.0 ponto]</span><br>
+            <input type="text" class="answer" placeholder="Digite entre [1 - 2]">
+        </div>
+        <div class="question">
+            <span>4) Qual é o procedimento em uma abordagem de rotina? [2.0 ponto]</span><br>
+            <input type="text" class="answer" placeholder="Digite entre [1 - 2]">
+        </div>
+        <div class="question">
+            <span>5) Qual é o procedimento em uma abordagem suspeita? [2.0 ponto]</span><br>
+            <input type="text" class="answer" placeholder="Digite entre [1 - 2]">
+        </div>
+
+        <div class="question">
+            <span>Digite sua Observação</span><br>
+            <input type="text" id="observacao" placeholder="Digite sua resposta">
+        </div>
+        <button onclick="finalizar()">Finalizar Avaliação</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function finalizar() {
+            var instrutor = document.getElementById("instrutor").value;
+            var conscrito = document.getElementById("conscrito").value;
+            var turno = document.getElementById("turno").value;
+            var obs = document.getElementById("observacao").value;
+            const answerElements = document.getElementsByClassName("answer");
+            let sum = 0;
+            for (let i = 0; i < answerElements.length; i++) {
+                const answer = parseFloat(answerElements[i].value);
+                if (!isNaN(answer)) {
+                    sum += answer;
+                }
+            }
+            const resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = `
+                <p>Instrutor: ${instrutor}</p>
+                <p>Conscrito: ${conscrito}<br>Turno de trabalho: ${turno}</p>
+                <p>Questão 1: ${answerElements[0].value} <br> Questão 2: ${answerElements[1].value} <br> Questão 3: ${answerElements[2].value} <br> Questão 4: ${answerElements[3].value} <br> Questão 5: ${answerElements[4].value}</p>
+                <p>Pontuação total: ${sum.toFixed(1)}</p>
+                <p>Observações: ${obs}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
