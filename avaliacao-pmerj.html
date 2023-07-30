@@ -140,6 +140,14 @@
                 <p>Pontuação total: ${sum.toFixed(1)}</p>
                 <p>Observações: ${obs}</p>
             `;
+            // Copy the resultDiv content to clipboard
+            navigator.clipboard.writeText(resultDiv.innerHTML)
+                .then(() => {
+                    alert("Avaliação copiada para a área de transferência (Ctrl+V)!");
+            })
+            .catch((err) => {
+                console.error("Falha ao copiar a avaliação: ", err);
+            });
         }
     </script>
 </body>
