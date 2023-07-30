@@ -120,38 +120,27 @@
         <div id="result"></div>
     </div>
 
-   <script>
-    function finalizar() {
-        var instrutor = document.getElementById("instrutor").value;
-        var conscrito = document.getElementById("conscrito").value;
-        var turno = document.getElementById("turno").value;
-        var obs = document.getElementById("observacao").value;
-        const answerElements = document.getElementsByClassName("answer");
-        let sum = 0;
-        for (let i = 0; i < answerElements.length; i++) {
-            const answer = parseFloat(answerElements[i].value);
-            if (!isNaN(answer)) {
-                sum += answer;
+    <script>
+        function finalizar() {
+            var conscrito = document.getElementById("conscrito").value;
+            var turno = document.getElementById("turno").value;
+            var obs = document.getElementById("observacao").value;
+            const answerElements = document.getElementsByClassName("answer");
+            let sum = 0;
+            for (let i = 0; i < answerElements.length; i++) {
+                const answer = parseFloat(answerElements[i].value);
+                if (!isNaN(answer)) {
+                    sum += answer;
+                }
             }
+            const resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = `
+                <p>Conscrito: ${conscrito}<br>Turno de trabalho: ${turno}</p>
+                <p>Questão 1: ${answerElements[0].value} <br> Questão 2: ${answerElements[1].value} <br> Questão 3: ${answerElements[2].value} <br> Questão 4: ${answerElements[3].value} <br> Questão 5: ${answerElements[4].value}</p>
+                <p>Pontuação total: ${sum.toFixed(1)}</p>
+                <p>Observações: ${obs}</p>
+            `;
         }
-        const resultDiv = document.getElementById("result");
-        resultDiv.innerHTML = `
-            <p>Conscrito: ${conscrito}<br>Turno de trabalho: ${turno}</p>
-            <p>Questão 1: ${answerElements[0].value} <br> Questão 2: ${answerElements[1].value} <br> Questão 3: ${answerElements[2].value} <br> Questão 4: ${answerElements[3].value} <br> Questão 5: ${answerElements[4].value}</p>
-            <p>Pontuação total: ${sum.toFixed(1)}</p>
-            <p>Observações: ${obs}</p>
-        `;
-
-        // Copy the resultDiv content to clipboard
-        navigator.clipboard.writeText(resultDiv.innerHTML)
-            .then(() => {
-                alert("Avaliação copiada para a área de transferência (Ctrl+V)!");
-            })
-            .catch((err) => {
-                console.error("Falha ao copiar a avaliação: ", err);
-            });
-    }
-</script>
-
+    </script>
 </body>
 </html>
