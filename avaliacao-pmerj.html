@@ -83,10 +83,6 @@
     </div>
     <div id="questionnaire">
         <div class="question">
-            <span>Instrutor:</span><br>
-            <input type="text" id="instrutor" placeholder="Digite sua Resposta">
-        </div>
-        <div class="question">
             <span>Nome &amp; Id do conscrito: Exemplo("Luydi Passarin | 1430")</span><br>
             <input type="text" id="conscrito" placeholder="Digite sua Resposta">
         </div>
@@ -140,7 +136,6 @@
             }
             const resultDiv = document.getElementById("result");
             resultDiv.innerHTML = `
-                <p>Instrutor: ${instrutor}</p>
                 <p>Conscrito: ${conscrito}<br>Turno de trabalho: ${turno}</p>
                 <p>Questão 1: ${answerElements[0].value} <br> Questão 2: ${answerElements[1].value} <br> Questão 3: ${answerElements[2].value} <br> Questão 4: ${answerElements[3].value} <br> Questão 5: ${answerElements[4].value}</p>
                 <p>Pontuação total: ${sum.toFixed(1)}</p>
