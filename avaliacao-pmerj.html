@@ -128,7 +128,7 @@
         }
         h2{
             color: white;
-            font-size: 7.3333vh;
+            font-size: 4.3333vh;
         }
         a{
             font-size: 2.6667vh;
@@ -280,6 +280,7 @@
             }
             const resultDiv = document.getElementById("result");
             resultDiv.innerHTML = `
+                <p>RESULTADO AVALIATIVO</p><br>
                 <p>Conscrito: ${conscrito}<br>Turno de trabalho: ${turno}</p>
                 <p>Questão 1: ${answerElements[0].value} <br> Questão 2: ${answerElements[1].value} <br> Questão 3: ${answerElements[2].value} <br> Questão 4: ${answerElements[3].value} <br> Questão 5: ${answerElements[4].value}</p>
                 <p>Pontuação total: ${sum.toFixed(1)}</p>
